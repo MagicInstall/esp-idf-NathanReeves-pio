@@ -1,4 +1,10 @@
-# Espressif IoT Development Framework
+# Porting NathanReeves esp-idf to PlatformIO 
+
+实在没办在VScode + Pio 上正常使用[NathanReeves 魔改版的esp-idf](https://github.com/NathanReeves/esp-idf), 故将NathanReeves 的代码移植到Pio 的framework-espidf.
+
+初始工程基于以下版本:
+* PlatformIO framework-espidf v3.3.0
+* ESP-IDF v4.2.1
 
 * [中文版](./README_CN.md)
 
