@@ -16,8 +16,15 @@ Pio先装好framework-espidf v3.3.0，在"~/.platformio/package/framework-espidf
     platform = espressif32@3.3.0 <br/>
 这样即使更新了也可以保留v3.3.0版本的platform，其它工程可以使用新版本的platform。<br/>
 
+# 问题
 
+* 2021-07-17
+新开的项目目前尚未可用，IDF 自4.0后更改了很多宏的命名，个人没办法尽数修改及适配，望各路大神相助！<br/>
+早期我个人只能尽力做出joycon相关的部分...
 
+# 更新日志
+
+看提交的注释...
 
 # 
 #
