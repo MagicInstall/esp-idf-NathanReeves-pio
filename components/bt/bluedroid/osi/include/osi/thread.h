@@ -23,6 +23,10 @@
 #include "esp_task.h"
 #include "common/bt_defs.h"
 
+#ifndef CONFIG_BLUEDROID_PINNED_TO_CORE
+    #define CONFIG_BLUEDROID_PINNED_TO_CORE 0
+#endif
+
 #define portBASE_TYPE int
 
 struct bt_task_evt {

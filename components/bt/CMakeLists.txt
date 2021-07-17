@@ -1,11 +1,40 @@
+# 改用新版的CMakeLists，路径使用旧的		2021-07-17	wing
 if(CONFIG_BT_ENABLED)
+    # 改用新的bt.c	2021-07-16	wing
+    if(CONFIG_IDF_TARGET_ESP32)
+        set(srcs "controller/esp32/bt.c")
+    elseif(CONFIG_IDF_TARGET_ESP32C3)
+        set(srcs "controller/esp32c3/bt.c")
+    elseif(CONFIG_IDF_TARGET_ESP32S3)
+        set(srcs "controller/esp32s3/bt.c")
+    endif()
+    # set(COMPONENT_SRCS "bt.c")
+    
+    set(include_dirs bluedroid/osi/include)
+    
+    #[[暂时先用旧版的esp_bt.h
+    if(CONFIG_IDF_TARGET_ESP32)
+        list(APPEND include_dirs include/esp32/include)
+    elseif(CONFIG_IDF_TARGET_ESP32C3)
+        list(APPEND include_dirs include/esp32c3/include)
+    elseif(CONFIG_IDF_TARGET_ESP32S3)
+        list(APPEND include_dirs include/esp32s3/include)
+    endif()
+    ]]
+    list(APPEND include_dirs include)
 
-    set(COMPONENT_SRCS "bt.c")
-    set(COMPONENT_ADD_INCLUDEDIRS include)
-
+    list(APPEND include_dirs 
+        bluedroid/api/include/api
+        bluedroid/bta/include
+        bluedroid/btc/include
+        bluedroid/stack/include
+        bluedroid/common/include
+        bluedroid/btc/profile/std/include
+        bluedroid/stack/hid/include)
+    
     if(CONFIG_BLUEDROID_ENABLED)
 
-        list(APPEND COMPONENT_PRIV_INCLUDEDIRS
+        list(APPEND priv_include_dirs
             bluedroid/bta/include
             bluedroid/bta/ar/include
             bluedroid/bta/av/include
@@ -42,17 +71,8 @@ if(CONFIG_BT_ENABLED)
             bluedroid/stack/include
             bluedroid/common/include)
 
-        list(APPEND COMPONENT_ADD_INCLUDEDIRS 
-            bluedroid/api/include/api
-            bluedroid/bta/include
-            bluedroid/btc/include
-            bluedroid/stack/include
-            bluedroid/osi/include
-            bluedroid/common/include
-            bluedroid/btc/profile/std/include
-            bluedroid/stack/hid/include)
 
-        list(APPEND COMPONENT_SRCS "bluedroid/api/esp_a2dp_api.c"
+        list(APPEND srcs "bluedroid/api/esp_a2dp_api.c"
                    "bluedroid/api/esp_avrc_api.c"
                    "bluedroid/api/esp_blufi_api.c"
                    "bluedroid/api/esp_bt_device.c"
@@ -292,15 +312,25 @@ if(CONFIG_BT_ENABLED)
 endif()
 
 # requirements can't depend on config
-set(COMPONENT_PRIV_REQUIRES nvs_flash soc)
-
-register_component()
+idf_component_register(SRCS "${srcs}"
+                INCLUDE_DIRS "${include_dirs}"
+                PRIV_INCLUDE_DIRS "${priv_include_dirs}"
+                REQUIRES nvs_flash soc esp_timer esp_pm
+                PRIV_REQUIRES esp_ipc
+                LDFRAGMENTS "linker.lf")
 
 if(CONFIG_BT_ENABLED)
-    if(GCC_NOT_5_2_0)
-        component_compile_options(-Wno-implicit-fallthrough -Wno-unused-const-variable)
+    target_compile_options(${COMPONENT_LIB} PRIVATE -Wno-implicit-fallthrough -Wno-unused-const-variable)
+    if(CONFIG_IDF_TARGET_ESP32)
+        target_link_libraries(${COMPONENT_LIB} INTERFACE "-L${CMAKE_CURRENT_LIST_DIR}/controller/lib_esp32/esp32")
+        target_link_libraries(${COMPONENT_LIB} PUBLIC btdm_app)
+    elseif(CONFIG_IDF_TARGET_ESP32C3)
+        target_link_libraries(${COMPONENT_LIB} INTERFACE
+                "-L${CMAKE_CURRENT_LIST_DIR}/controller/lib_esp32c3_family/esp32c3")
+        target_link_libraries(${COMPONENT_LIB} PUBLIC btdm_app btbb)
+    elseif(CONFIG_IDF_TARGET_ESP32S3)
+        target_link_libraries(${COMPONENT_LIB} INTERFACE
+                "-L${CMAKE_CURRENT_LIST_DIR}/controller/lib_esp32c3_family/esp32s3")
+        target_link_libraries(${COMPONENT_LIB} PUBLIC btdm_app btbb)
     endif()
-
-    target_link_libraries(${COMPONENT_TARGET} "-L${CMAKE_CURRENT_LIST_DIR}/lib")
-    target_link_libraries(${COMPONENT_TARGET} btdm_app)
 endif()

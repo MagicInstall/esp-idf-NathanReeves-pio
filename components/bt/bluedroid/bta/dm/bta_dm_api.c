@@ -436,12 +436,15 @@ void BTA_DmBondCancel(BD_ADDR bd_addr)
 
 
 }
+#endif /// SMP_INCLUDED == TRUE 
 
+#if (CLASSIC_BT_INCLUDED == TRUE)
 /*******************************************************************************
 **
 ** Function         BTA_DMSetPinType
 **
 ** Description      This function set pin type as BTM_PIN_TYPE_FIXED or BTM_PIN_TYPE_VARIABLE
+**                  该方法在新版本中已改为在CLASSIC_BT_INCLUDED 宏中.   -- 2021-07-17   wing
 **
 **
 ** Returns          void
@@ -466,6 +469,7 @@ void BTA_DMSetPinType (UINT8 pin_type, UINT8 *pin_code, UINT8 pin_code_len)
 **
 ** Description      This function provides a pincode for a remote device when
 **                  one is requested by DM through BTA_DM_PIN_REQ_EVT
+**                  该方法在新版本中已改为在CLASSIC_BT_INCLUDED 宏中.   -- 2021-07-17   wing
 **
 **
 ** Returns          void
@@ -487,6 +491,9 @@ void BTA_DmPinReply(BD_ADDR bd_addr, BOOLEAN accept, UINT8 pin_len, UINT8 *p_pin
     }
 
 }
+#endif
+
+#if (SMP_INCLUDED == TRUE)
 
 #if (BTM_OOB_INCLUDED == TRUE && SMP_INCLUDED == TRUE)
 /*******************************************************************************
@@ -633,6 +640,7 @@ void BTA_DmAddDevice(BD_ADDR bd_addr, DEV_CLASS dev_class, LINK_KEY link_key,
         bta_sys_sendmsg(p_msg);
     }
 }
+#endif  ///SMP_INCLUDED == TRUE
 
 
 /*******************************************************************************
@@ -663,7 +671,9 @@ tBTA_STATUS BTA_DmRemoveDevice(BD_ADDR bd_addr, tBT_TRANSPORT transport)
 
     return BTA_SUCCESS;
 }
+/* 新版本已无条件编译BTA_DmRemoveDevice 函数    --  2021-07-17  wing
 #endif  ///SMP_INCLUDED == TRUE
+*/
 
 /*******************************************************************************
 **

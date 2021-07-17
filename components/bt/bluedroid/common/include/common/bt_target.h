@@ -130,7 +130,8 @@
 #define GATTC_CACHE_NVS              FALSE
 #endif  /* CONFIG_GATTC_CACHE_NVS_FLASH */
 
-#if (CONFIG_SMP_ENABLE)
+#if (CONFIG_BT_SMP_ENABLE)
+/*  #if (CONFIG_SMP_ENABLE)   新版中宏改了名    2021-07-17     wing  */
 #define SMP_INCLUDED              TRUE
 #define BLE_PRIVACY_SPT           TRUE
 #else
