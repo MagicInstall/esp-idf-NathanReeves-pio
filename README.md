@@ -8,7 +8,7 @@
 
 # 使用
 
-Pio先装好framework-espidf v3.3.0，在"~/.platformio/package/framework-espidf"下会有Pio版的IDF，只保留这个文件夹，内容全部删除，（之后不要再更新framework-espidf），将此仓库的.github 和?????? 放到framework-espidf 文件夹下，通过github IDE 添加此工程就能拉取整个源码库，之后就按正常的framework-espidf v3.3.0 使用，<br/>
+Pio先装好framework-espidf v3.3.0，在"~/.platformio/packages/framework-espidf"下会有Pio版的IDF，只保留这个文件夹，内容全部删除，（之后不要再更新framework-espidf），将此仓库的.git 和.gitattributes 放到framework-espidf 文件夹下，通过github IDE 添加此工程就能拉取整个源码库，之后就按正常的framework-espidf v3.3.0 使用，<br/>
 千万不要更新framework-espidf！<br/>
 千万不要更新framework-espidf！<br/>
 千万不要更新framework-espidf！<br/>
