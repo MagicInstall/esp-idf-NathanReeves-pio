@@ -6,9 +6,28 @@
 * PlatformIO framework-espidf v3.3.0
 * ESP-IDF v4.2.1
 
-* [中文版](./README_CN.md)
+# 使用
 
-ESP-IDF is the official development framework for the **ESP32** and **ESP32-S** Series SoCs provided for Windows, Linux and macOS.
+Pio先装好framework-espidf v3.3.0，在"~/.platformio/packages/framework-espidf"下会有Pio版的IDF，直接把framework-espidf 文件夹整个删除，通过git 工具拉取此库替代原来的framework-espidf 文件夹，之后就按正常的framework-espidf v3.3.0 使用，<br/>
+千万不要更新framework-espidf！<br/>
+千万不要更新framework-espidf！<br/>
+千万不要更新framework-espidf！<br/>
+或者在platformio.ini 中固定版本号：<br/>
+    platform = espressif32@3.3.0 <br/>
+这样即使更新了也可以保留v3.3.0版本的platform，其它工程可以使用新版本的platform。<br/>
+
+# 问题
+
+* 2021-07-17
+新开的项目目前尚未可用，IDF 自4.0后更改了很多宏的命名，个人没办法尽数修改及适配，望各路大神相助！<br/>
+早期我个人只能尽力做出joycon相关的部分...
+
+# 更新日志
+
+看提交的注释...
+
+# 
+#
 
 # Developing With ESP-IDF
 
