@@ -13,7 +13,7 @@
 *.nexe
 *.o
 *.plist
-*.s
+#*.s
 *.scan
 *.sdf
 *.status
