@@ -12,7 +12,7 @@ if(CONFIG_BT_ENABLED)
     
     set(include_dirs bluedroid/osi/include)
     
-    #[[暂时先用旧版的esp_bt.h
+    # 改用新的esp_bt.h	2021-07-18	wing
     if(CONFIG_IDF_TARGET_ESP32)
         list(APPEND include_dirs include/esp32/include)
     elseif(CONFIG_IDF_TARGET_ESP32C3)
@@ -20,8 +20,7 @@ if(CONFIG_BT_ENABLED)
     elseif(CONFIG_IDF_TARGET_ESP32S3)
         list(APPEND include_dirs include/esp32s3/include)
     endif()
-    ]]
-    list(APPEND include_dirs include)
+    #list(APPEND include_dirs include)
 
     list(APPEND include_dirs 
         bluedroid/api/include/api
