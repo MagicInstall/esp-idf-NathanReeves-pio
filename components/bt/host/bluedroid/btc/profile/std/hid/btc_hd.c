@@ -51,7 +51,7 @@
 #define COD_HID_POINTING 0x0580
 #define COD_HID_COMBO 0x05C0
 #define COD_HID_MAJOR 0x0500
-extern "C" bool bta_dm_check_if_only_hd_connected(BD_ADDR peer_addr);
+extern bool bta_dm_check_if_only_hd_connected(BD_ADDR peer_addr);
 //extern bool check_cod_hid(const bt_bdaddr_t* remote_bdaddr);
 /* HD request events */
 typedef enum { BTC_HD_DUMMY_REQ_EVT = 0 } btc_hd_req_evt_t;

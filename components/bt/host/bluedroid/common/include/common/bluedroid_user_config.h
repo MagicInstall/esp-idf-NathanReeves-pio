@@ -81,6 +81,12 @@
 #define UC_BT_SSP_ENABLED                   FALSE
 #endif
 
+// NathanReeves HIDD    --  2021-07-22  wing
+#if CONFIG_BT_HID_DEV_ENABLED
+#define HID_DEV_INCLUDED            TRUE
+#define BTA_HD_INCLUDED             TRUE
+#endif /* CONFIG_BT_HID_DEV_ENABLED */
+
 //BLE
 #ifdef CONFIG_BT_BLE_ENABLED
 #define UC_BT_BLE_ENABLED                   CONFIG_BT_BLE_ENABLED

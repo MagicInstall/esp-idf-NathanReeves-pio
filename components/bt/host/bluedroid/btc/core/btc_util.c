@@ -35,6 +35,11 @@
 #include "bta/bta_ag_api.h"
 #endif  ///BTA_AG_INCLUDED == TRUE
 
+// 从NathanReeves 的btc_util.c 搬过来(新版IDF 没有这个).   --  2021-07-23  wing
+#if (BTA_HD_INCLUDED == TRUE)
+#include "bta/bta_hd_api.h"
+#endif
+
 #include "common/bt_defs.h"
 #include "stack/btm_api.h"
 #include "bta/bta_api.h"
@@ -208,6 +213,30 @@ const char* dump_hf_call_setup_state(esp_hf_call_setup_status_t call_setup_state
 }
 
 #endif // #if (BTA_AG_INCLUDED == TRUE)
+
+
+// 从NathanReeves 的btc_util.c 搬过来(新版IDF 没有这个).   --  2021-07-23  wing
+#if BTA_HD_INCLUDED == TRUE
+const char* dump_hd_event(uint16_t event) {
+  switch (event) {
+    CASE_RETURN_STR(BTA_HD_ENABLE_EVT)
+    CASE_RETURN_STR(BTA_HD_DISABLE_EVT)
+    CASE_RETURN_STR(BTA_HD_REGISTER_APP_EVT)
+    CASE_RETURN_STR(BTA_HD_UNREGISTER_APP_EVT)
+    CASE_RETURN_STR(BTA_HD_OPEN_EVT)
+    CASE_RETURN_STR(BTA_HD_CLOSE_EVT)
+    CASE_RETURN_STR(BTA_HD_GET_REPORT_EVT)
+    CASE_RETURN_STR(BTA_HD_SET_REPORT_EVT)
+    CASE_RETURN_STR(BTA_HD_SET_PROTOCOL_EVT)
+    CASE_RETURN_STR(BTA_HD_INTR_DATA_EVT)
+    CASE_RETURN_STR(BTA_HD_VC_UNPLUG_EVT)
+    //CASE_RETURN_STR(BTA_HD_CONN_STATE_EVT)
+    CASE_RETURN_STR(BTA_HD_API_ERR_EVT)
+    default:
+      return "UNKNOWN MSG ID";
+  }
+}
+#endif ///BTA_HD_INCLUDED
 
 UINT32 devclass2uint(DEV_CLASS dev_class)
 {

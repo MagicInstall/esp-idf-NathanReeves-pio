@@ -27,6 +27,10 @@
 #define BTC_STORAGE_PIN_LENGTH_STR      "PinLength"
 #define BTC_STORAGE_SC_SUPPORT          "SCSupport"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*******************************************************************************
 **
 ** Function         btc_storage_add_bonded_device
@@ -90,5 +94,9 @@ int btc_storage_get_num_bt_bond_devices(void);
 **
 *******************************************************************************/
 bt_status_t btc_storage_get_bonded_bt_devices_list(bt_bdaddr_t *bond_dev, int *dev_num);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* BTC_STORAGE_H */

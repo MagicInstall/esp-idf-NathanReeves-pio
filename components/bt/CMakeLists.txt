@@ -49,6 +49,7 @@ if(CONFIG_BT_ENABLED)
             host/bluedroid/bta/hf_ag/include
             host/bluedroid/bta/hf_client/include
             host/bluedroid/bta/hh/include
+            host/bluedroid/bta/hd/include
             host/bluedroid/bta/jv/include
             host/bluedroid/bta/sdp/include
             host/bluedroid/bta/sys/include
@@ -132,7 +133,9 @@ if(CONFIG_BT_ENABLED)
                    "host/bluedroid/bta/hh/bta_hh_main.c"
                    "host/bluedroid/bta/hh/bta_hh_utils.c"
                    #
-                   "host/bluedroid/bta/hd/bta_hd_api.cc" 
+                   "host/bluedroid/bta/hd/bta_hd_api.c" 
+                   "host/bluedroid/bta/hd/bta_hd_act.c" 
+                   "host/bluedroid/bta/hd/bta_hd_main.c" 
                    "host/bluedroid/bta/jv/bta_jv_act.c"
                    "host/bluedroid/bta/jv/bta_jv_api.c"
                    "host/bluedroid/bta/jv/bta_jv_cfg.c"
@@ -187,7 +190,8 @@ if(CONFIG_BT_ENABLED)
                    "host/bluedroid/btc/profile/std/hf_client/bta_hf_client_co.c"
                    "host/bluedroid/btc/profile/std/hid/hidh_api.c"
                    "host/bluedroid/btc/profile/std/hid/hidh_conn.c"
-                   "host/bluedroid/btc/profile/std/hid/btc_hd.cc"
+                   #
+                   "host/bluedroid/btc/profile/std/hid/btc_hd.c"
                    "host/bluedroid/btc/profile/std/gap/btc_gap_ble.c"
                    "host/bluedroid/btc/profile/std/gap/btc_gap_bt.c"
                    "host/bluedroid/btc/profile/std/gap/bta_gap_bt_co.c"
@@ -290,7 +294,8 @@ if(CONFIG_BT_ENABLED)
                    "host/bluedroid/stack/hcic/hciblecmds.c"
                    "host/bluedroid/stack/hcic/hcicmds.c"
                    #
-                   "host/bluedroid/stack/hid/hidd_api.cc"
+                   "host/bluedroid/stack/hid/hidd_api.c"
+                   "host/bluedroid/stack/hid/hidd_conn.c"
                    "host/bluedroid/stack/l2cap/l2c_api.c"
                    "host/bluedroid/stack/l2cap/l2c_ble.c"
                    "host/bluedroid/stack/l2cap/l2c_csm.c"

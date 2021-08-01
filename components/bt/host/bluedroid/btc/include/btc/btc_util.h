@@ -48,6 +48,11 @@ const char *dump_hf_call_state(esp_hf_call_status_t call_state);
 const char* dump_hf_call_setup_state(esp_hf_call_setup_status_t call_setup_state);
 #endif
 
+// 从NathanReeves 的btc_util.h 搬过来(新版IDF 没有这个).   --  2021-07-23  wing
+#if(BTA_HD_INCLUDED == TRUE)
+const char* dump_hd_event(uint16_t event);
+#endif
+
 UINT32 devclass2uint(DEV_CLASS dev_class);
 void uint2devclass(UINT32 dev, DEV_CLASS dev_class);
 void uuid128_be_to_esp_uuid(esp_bt_uuid_t *u, uint8_t* uuid128);

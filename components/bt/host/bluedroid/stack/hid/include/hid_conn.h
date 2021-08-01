@@ -48,7 +48,7 @@ typedef struct hid_conn {
   uint16_t intr_cid;
   uint16_t rem_mtu_size;
   uint16_t disc_reason; /* Reason for disconnecting (for HID_HDEV_EVT_CLOSE) */
-  alarm_t* process_repage_timer;
+  osi_alarm_t* process_repage_timer;
 } tHID_CONN;
 #define HID_SEC_CHN 1
 #define HID_NOSEC_CHN 2

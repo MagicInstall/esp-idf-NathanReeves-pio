@@ -1253,8 +1253,12 @@ typedef UINT8 tBTM_LINK_KEY_TYPE;
 #define BTM_SEC_SERVICE_HDP_SRC         49
 #define BTM_SEC_SERVICE_ATT             50
 
-/* Update these as services are added */
-#define BTM_SEC_SERVICE_FIRST_EMPTY     51
+#define BTM_SEC_SERVICE_HIDD_SEC_CTRL   51  //
+#define BTM_SEC_SERVICE_HIDD_NOSEC_CTRL 52  //  从NathanReeves 的btm_api 搬过来(新版IDF 没有这个).   --  2021-07-23  wing
+#define BTM_SEC_SERVICE_HIDD_INTR       53  //
+                                            //  TODO: 
+/* Update these as services are added */    //      新版的BTM_SEC_SERVICE_FIRST_EMPTY 是51, 
+#define BTM_SEC_SERVICE_FIRST_EMPTY     54  //      个人认为改了应该不会有问题...
 
 #ifndef BTM_SEC_MAX_SERVICES
 #define BTM_SEC_MAX_SERVICES            65

@@ -21,6 +21,18 @@
 #include "hiddefs.h"
 #include "sdp_api.h"
 
+#ifndef HID_DEV_MTU_SIZE                //
+#define HID_DEV_MTU_SIZE    64          //
+#endif                                  //
+                                        //
+#ifndef HID_DEV_FLUSH_TO                //
+#define HID_DEV_FLUSH_TO    0xffff      // 从NathanReeves 的bt_target.h 搬过来(新版IDF 没有这个).   --  2021-07-23  wing
+#endif                                  //
+                                        //
+#ifndef HID_HOST_FLUSH_TO               //
+#define HID_HOST_FLUSH_TO   0xffff      //
+#endif                                  //
+
 #if (HID_DEV_INCLUDED == TRUE)
 /*****************************************************************************
  *  Type Definitions

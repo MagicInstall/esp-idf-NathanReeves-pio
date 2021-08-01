@@ -28,6 +28,9 @@
 #ifndef BTA_HD_DEBUG
 #define BTA_HD_DEBUG FALSE
 #endif
+// #ifndef HID_DEV_MTU_SIZE  // 从NathanReeves 的bt_target.h 搬过来(新版IDF 没有这个).   --  2021-07-23  wing
+// #define HID_DEV_MTU_SIZE 64
+// #endif
 /* BTA HID Device callback events */
 #define BTA_HD_ENABLE_EVT 0         /* BT-HD enabled */
 #define BTA_HD_DISABLE_EVT 1        /* BT-HD disabled */

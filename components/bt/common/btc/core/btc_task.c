@@ -48,7 +48,7 @@
 #include "btc_spp.h"
 #endif /* #if (BTC_SPP_INCLUDED == TRUE) */
 #if HID_DEV_INCLUDED == TRUE
-#include "btc_hd.h"
+#include "btc_hd.h"     // NathanReeves HIDD    --  2021-07-22  wing
 #endif
 #if BTC_HF_INCLUDED
 #include "btc_hf_ag.h"
@@ -117,7 +117,7 @@ static const btc_func_t profile_tab[BTC_PID_NUM] = {
 #if (BTC_SPP_INCLUDED == TRUE)
     [BTC_PID_SPP]         = {btc_spp_call_handler,        btc_spp_cb_handler      },
 #endif /* #if (BTC_SPP_INCLUDED == TRUE) */
-#if HID_DEV_INCLUDED
+#if HID_DEV_INCLUDED    // NathanReeves HIDD    --  2021-07-22  wing
     [BTC_PID_HD]          = {btc_hd_call_handler,          btc_hd_cb_handler      },
 #endif
 #if BTC_HF_INCLUDED
