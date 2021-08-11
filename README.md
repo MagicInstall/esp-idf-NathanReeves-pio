@@ -6,28 +6,7 @@
 * PlatformIO framework-espidf v3.3.0
 * ESP-IDF v4.2.1
 
-# 使用
-
-Pio先装好framework-espidf v3.3.0，在"~/.platformio/packages/framework-espidf"下会有Pio版的IDF，直接把framework-espidf 文件夹整个删除，通过git 工具拉取此库替代原来的framework-espidf 文件夹，之后就按正常的framework-espidf v3.3.0 使用，<br/>
-千万不要更新framework-espidf！<br/>
-千万不要更新framework-espidf！<br/>
-千万不要更新framework-espidf！<br/>
-或者在platformio.ini 中固定版本号：<br/>
-    platform = espressif32@3.3.0 <br/>
-这样即使更新了也可以保留v3.3.0版本的platform，其它工程可以使用新版本的platform。<br/>
-
-# 问题
-
-* <s>2021-07-17
-新开的项目目前尚未可用，IDF 自4.0后更改了很多宏的命名，个人没办法尽数修改及适配，望各路大神相助！</s><br/>
-2021-08-01
-宏命名基本解决:</br>
-参照[我的Firmware 工程](https://github.com/MagicInstall/JoyShot)中[platformio.ini](https://github.com/MagicInstall/JoyShot/blob/master/platformio.ini)里的几个预编译宏。</br>
-* 2021-08-11
-在某些游戏中，手柄会被Switch 置于后台（不知道这个状态怎么表达...），此时手柄会发生ESP_BT_GAP_MODE_CHG_EVT 事件，状态码由ESP_BT_PM_MD_SNIFF
-转为ESP_BT_PM_MD_ACTIVE，个人估计是V12 通知手柄切换到某种省电模式的过程，但此时立即就断连了！</br>
-参考了一些Issues，瞎猜貌似是Switch 改变了通信间隔，而IDF没有相应的对策导致？
-* 早期我个人只能尽力做出joycon相关的部分...</br>
+# 暂时放弃此分支!
 
 # 参考
 [https://github.com/NathanReeves/esp-idf](https://github.com/NathanReeves/esp-idf)<br/>
