@@ -26,11 +26,13 @@ Pio先装好framework-espidf v3.3.0，在"~/.platformio/packages/framework-espid
 * 2021-08-11
 在某些游戏中，手柄会被Switch 置于后台（不知道这个状态怎么表达...），此时手柄会发生ESP_BT_GAP_MODE_CHG_EVT 事件，状态码由ESP_BT_PM_MD_SNIFF
 转为ESP_BT_PM_MD_ACTIVE，个人估计是V12 通知手柄切换到某种省电模式的过程，但此时立即就断连了！</br>
-参考了一些Issues，瞎猜貌似是Switch 改变了通信间隔，而IDF没有相应的对策导致？
+参考了一些Issues，瞎猜貌似是Switch 改变了通信间隔，而IDF没有相应的对策导致？<br/>
+望各路大神相助！
 * 早期我个人只能尽力做出joycon相关的部分...</br>
 
 # 参考
 [https://github.com/NathanReeves/esp-idf](https://github.com/NathanReeves/esp-idf)<br/>
+[https://github.com/dekuNukem/Nintendo_Switch_Reverse_Engineering](https://github.com/dekuNukem/Nintendo_Switch_Reverse_Engineering)<br/>
 
 # 
 # -------------- 以下是原IDF 的Readme --------------
