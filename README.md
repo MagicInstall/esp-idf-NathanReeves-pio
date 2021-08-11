@@ -29,6 +29,8 @@ Pio先装好framework-espidf v3.3.0，在"~/.platformio/packages/framework-espid
 参考了一些Issues，瞎猜貌似是Switch 改变了通信间隔，而IDF没有相应的对策导致？
 * 早期我个人只能尽力做出joycon相关的部分...</br>
 
+# 参考
+[https://github.com/NathanReeves/esp-idf](https://github.com/NathanReeves/esp-idf)<br/>
 
 # 
 # -------------- 以下是原IDF 的Readme --------------
