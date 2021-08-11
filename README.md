@@ -22,7 +22,7 @@ Pio先装好framework-espidf v3.3.0，在"~/.platformio/packages/framework-espid
 新开的项目目前尚未可用，IDF 自4.0后更改了很多宏的命名，个人没办法尽数修改及适配，望各路大神相助！</s><br/>
 2021-08-01
 宏命名基本解决:</br>
-其中有几个宏在新版的IDF 中改动太大, 我放到了Pio 配置文件里，参照[我的Firmware 工程](https://github.com/MagicInstall/JoyShot)中[platformio.ini](https://github.com/MagicInstall/JoyShot/blob/master/platformio.ini)里的几个预编译宏。</br>
+其中有几个宏在新版的IDF 中改动太大甚至已经不在menuconfig 里了, 我放到了Firmware 的Pio 配置文件里定义，参照[我的Firmware 工程](https://github.com/MagicInstall/JoyShot)中[platformio.ini](https://github.com/MagicInstall/JoyShot/blob/master/platformio.ini)里的几个预编译宏。</br>
 * 2021-08-11
 在某些游戏中，手柄会被Switch 置于后台（不知道这个状态怎么表达...），此时手柄会发生ESP_BT_GAP_MODE_CHG_EVT 事件，状态码由ESP_BT_PM_MD_SNIFF
 转为ESP_BT_PM_MD_ACTIVE，个人估计是V12 通知手柄切换到某种省电模式的过程，但此时立即就断连了！</br>
