@@ -421,6 +421,29 @@ static bt_status_t unregister_app(void) {
   BTA_HdUnregisterApp();
   return BT_STATUS_SUCCESS;
 }
+
+/*
+ *  增加 open_device
+ *  2021-08-24  wing
+ */
+#include "bta_hd_int.h"
+
+static bt_status_t open_device(BD_ADDR bd_addr) {
+  BTC_TRACE_API("%s", __func__);
+
+  if (btc_hd_cb.status != BTC_HD_ENABLED) {
+    BTC_TRACE_WARNING("%s: BT-HD not enabled, status=%d", __func__,
+                       btc_hd_cb.status);
+    return BT_STATUS_NOT_READY;
+  }
+
+  // BTA_HdAddDevice(bd_addr);
+  tBTA_HD_CBACK_DATA data;
+  memcpy(&data.addr, bd_addr, sizeof(BD_ADDR));
+  bta_hd_open_act((tBTA_HD_DATA*)&data);
+  return BT_STATUS_SUCCESS;
+}
+
 /*******************************************************************************
  *
  * Function         connect
@@ -616,6 +639,9 @@ void btc_hd_call_handler(btc_msg_t *msg) {
             break;
         case BTC_HD_UNREGISTER_EVT:
             unregister_app();
+            break;
+        case BTC_HD_OPEN_DEVICE_EVT: // 2021-08-24  wing
+            open_device(arg->open.bd_addr);
             break;
         case BTC_HD_CONNECT_EVT:
             connect();

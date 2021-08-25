@@ -90,6 +90,24 @@ esp_err_t esp_hid_device_unregister_app(void) {
     return (stat == BT_STATUS_SUCCESS) ? ESP_OK : ESP_FAIL;
 }
 
+// 2021-08-24   wing
+esp_err_t esp_hid_open_device(uint8_t bd_addr[6])
+{
+    if (esp_bluedroid_get_status() != ESP_BLUEDROID_STATUS_ENABLED) {
+        return ESP_ERR_INVALID_STATE;
+    }
+
+    btc_msg_t msg;
+    esp_hidd_args_t args;
+    memcpy(&args.open.bd_addr, bd_addr, sizeof(uint8_t[6]));
+    msg.sig = BTC_SIG_API_CALL;
+    msg.pid = BTC_PID_HD;
+    msg.act = BTC_HD_OPEN_DEVICE_EVT;
+
+    bt_status_t stat = btc_transfer_context(&msg, &args, sizeof(esp_hidd_args_t), NULL);
+    return (stat == BT_STATUS_SUCCESS) ? ESP_OK : ESP_FAIL;
+}
+
 esp_err_t esp_hid_device_connect(void) {
     if (esp_bluedroid_get_status() != ESP_BLUEDROID_STATUS_ENABLED) {
         return ESP_ERR_INVALID_STATE;
