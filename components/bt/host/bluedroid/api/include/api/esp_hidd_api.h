@@ -18,7 +18,6 @@
 
 #include "esp_err.h"
 #include "esp_bt_defs.h"
-// #include "stack/bt_types.h" // BD_ADDR
 
 #ifdef __cplusplus
 extern "C" {
@@ -157,7 +156,7 @@ typedef union {
 
     struct // 2021-08-24  wing
     {
-        uint8_t bd_addr[6]; // 实际为BD_ADDR 
+        esp_bd_addr_t bd_addr;
     } open;
     
 
@@ -216,13 +215,13 @@ esp_err_t esp_hid_device_unregister_app(void);
  * @brief     跳过BTC, 直接用BTA 再连接
  *            2021-08-24  wing 
  * 
- * @param[in] bd_addr:  实际为BD_ADDR
+ * @param[in] bd_addr:  已配对过的地址.
  * 
  * @return
  *            - ESP_OK: success
  *            - other: failed
  */
-esp_err_t esp_hid_open_device(uint8_t bd_addr[6]);
+esp_err_t esp_hid_open_device(esp_bd_addr_t bd_addr);
 
 /**
  * @brief     This function connects HIDD interface to connected bluetooth device, if not done already.

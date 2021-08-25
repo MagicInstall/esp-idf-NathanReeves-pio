@@ -91,7 +91,7 @@ esp_err_t esp_hid_device_unregister_app(void) {
 }
 
 // 2021-08-24   wing
-esp_err_t esp_hid_open_device(uint8_t bd_addr[6])
+esp_err_t esp_hid_open_device(esp_bd_addr_t bd_addr)
 {
     if (esp_bluedroid_get_status() != ESP_BLUEDROID_STATUS_ENABLED) {
         return ESP_ERR_INVALID_STATE;
@@ -99,7 +99,7 @@ esp_err_t esp_hid_open_device(uint8_t bd_addr[6])
 
     btc_msg_t msg;
     esp_hidd_args_t args;
-    memcpy(&args.open.bd_addr, bd_addr, sizeof(uint8_t[6]));
+    memcpy(&args.open.bd_addr, bd_addr, sizeof(esp_bd_addr_t));
     msg.sig = BTC_SIG_API_CALL;
     msg.pid = BTC_PID_HD;
     msg.act = BTC_HD_OPEN_DEVICE_EVT;
