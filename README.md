@@ -23,11 +23,14 @@ Pio先装好framework-espidf v3.3.0，在"~/.platformio/packages/framework-espid
 2021-08-01
 宏命名基本解决:</br>
 其中有几个宏在新版的IDF 中改动太大甚至已经不在menuconfig 里了, 我放到了Firmware 的Pio 配置文件里定义，参照[我的Firmware 工程](https://github.com/MagicInstall/JoyShot)中[platformio.ini](https://github.com/MagicInstall/JoyShot/blob/master/platformio.ini)里的几个预编译宏。</br>
-* 2021-08-11
+* <s>2021-08-11
 在某些游戏中，手柄会被Switch 置于后台（不知道这个状态怎么表达...），此时手柄会发生ESP_BT_GAP_MODE_CHG_EVT 事件，状态码由ESP_BT_PM_MD_SNIFF
 转为ESP_BT_PM_MD_ACTIVE，个人估计是V12 通知手柄切换到某种省电模式的过程，但此时立即就断连了！</br>
 参考了一些Issues，瞎猜貌似是Switch 改变了通信间隔，而IDF没有相应的对策导致？<br/>
-望各路大神相助！
+望各路大神相助！</s><br/>
+2021-08-25
+之前脑残了，pro 手柄在Splatoon 2下，非P1 是会被强制断开的，而JC 只连接一边，作为P2~4 是不会断连的...<br/>
+顺便改了NathanReeves 版的api 原本没有的配对过的手柄自动重连功能，自己加上去了，由于水平有限，未能在BTC 层实现，绕过了BTC 直接调用了BTA，望各路大神指教如何做成通过BTC 层实现！
 * 早期我个人只能尽力做出joycon相关的部分...</br>
 
 # 参考
