@@ -428,7 +428,7 @@ static bt_status_t unregister_app(void) {
  */
 #include "bta_hd_int.h"
 
-static bt_status_t open_device(BD_ADDR bd_addr) {
+static bt_status_t open_device(esp_bd_addr_t bd_addr) {
   BTC_TRACE_API("%s", __func__);
 
   if (btc_hd_cb.status != BTC_HD_ENABLED) {
@@ -439,7 +439,7 @@ static bt_status_t open_device(BD_ADDR bd_addr) {
 
   // BTA_HdAddDevice(bd_addr);
   tBTA_HD_CBACK_DATA data;
-  memcpy(&data.addr, bd_addr, sizeof(BD_ADDR));
+  memcpy(&data.addr, bd_addr, sizeof(esp_bd_addr_t));
   bta_hd_open_act((tBTA_HD_DATA*)&data);
   return BT_STATUS_SUCCESS;
 }
